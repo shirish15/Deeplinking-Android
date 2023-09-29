@@ -31,7 +31,7 @@ class ApiRepoImpl() : ApiRepo {
             val res = apiService.callApi()
             val gson = GsonBuilder().setPrettyPrinting().create()
             val response = gson.toJson(res)
-            Log.e("API RESPONSE", "callApi: $response , ${Thread.currentThread().name}")
+            Log.e("API RESPONSE", "callApi: $response")
             ApiResultWrapper.Success(response)
         } catch (e: Exception) {
             e.printStackTrace()

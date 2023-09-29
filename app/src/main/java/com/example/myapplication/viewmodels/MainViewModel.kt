@@ -20,12 +20,12 @@ import java.lang.Exception
 import java.net.URLDecoder
 import java.nio.charset.StandardCharsets
 
-
 class MainViewModel constructor(private val repo: ApiRepo = ApiRepoImpl()) : ViewModel() {
 
     private val _uiState = MutableStateFlow(MainUiState())
     val uiState = _uiState.asStateFlow()
 
+    //function to handle events
     fun setEvents(events: MainEvents) {
         when (events) {
             MainEvents.CallApi -> {
@@ -66,6 +66,7 @@ class MainViewModel constructor(private val repo: ApiRepo = ApiRepoImpl()) : Vie
         }
     }
 
+    //function which calls the API
     private fun callApi() {
         _uiState.update {
             it.copy(loading = true, apiError = null)
@@ -91,6 +92,7 @@ class MainViewModel constructor(private val repo: ApiRepo = ApiRepoImpl()) : Vie
         }
     }
 
+    //data class for viewmodel mutable states
     data class MainUiState(
         val loading: Boolean = false,
         val urlParameters: Map<String, String> = emptyMap(),
@@ -101,6 +103,7 @@ class MainViewModel constructor(private val repo: ApiRepo = ApiRepoImpl()) : Vie
     )
 }
 
+//events fired from UI
 sealed interface MainEvents {
     object CallApi : MainEvents
     object HideDialog : MainEvents

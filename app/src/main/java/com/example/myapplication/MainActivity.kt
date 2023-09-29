@@ -44,6 +44,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onResume() {
         super.onResume()
+        //callback from custom chrome tab to handle uri
         val data: Uri? = intent?.data
         if (data != null && data.toString().isNotEmpty()) {
             mainViewModel.setEvents(MainEvents.SetDeepLink(url = data.toString()))
@@ -51,6 +52,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+//navigation events
 sealed interface NavigationDirections {
     object OpenBrowser : NavigationDirections
 }

@@ -95,7 +95,7 @@ fun MainScreenComposable(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colorScheme.onSecondaryContainer)
+            .background(MaterialTheme.colorScheme.primaryContainer)
             .padding(horizontal = 20.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
@@ -125,15 +125,16 @@ private fun ButtonComposable(modifier: Modifier = Modifier, btnText: String, onC
         modifier = modifier.fillMaxWidth(),
         onClick = onClick,
         shape = RoundedCornerShape(12.dp),
-        colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.onPrimary)
+        colors = ButtonDefaults.buttonColors(containerColor = Color.Black)
     ) {
         Text(
             text = btnText,
-            style = MaterialTheme.typography.labelLarge.copy(color = Color.Black)
+            style = MaterialTheme.typography.labelLarge.copy(color = Color.White)
         )
     }
 }
 
+//ui for bullet point
 @Composable
 private fun Bullet(text: String) {
     Row(
